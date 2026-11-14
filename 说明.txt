@@ -1,0 +1,49 @@
+﻿LiveSplit 透明背景插件 - 使用说明
+=================================
+
+适用：官方原版 LiveSplit 1.8.37 便携版（Windows 10/11 x64）。
+本说明不写死任何人的安装目录或 .lss 路径。
+
+一、功能
+1. 每次启动 LiveSplit 后自动把计时器背景抠透明，不需要每次手动改布局。
+2. 分段列表每一行也透明，不再出现一行黑、一行透明。
+3. 分段文字保持 LiveSplit 默认白色。
+4. 保留左键拖动计时器、右键弹出 LiveSplit 菜单。
+
+二、安装
+1. 完全退出 LiveSplit（任务管理器确认没有 LiveSplit.exe）。
+2. 把 LiveSplit.TransparentBackground.dll 复制到：
+   <你的 LiveSplit 安装目录>\Components\
+3. 启动该目录下的 LiveSplit.exe，打开你自己的 .lss。
+4. 插件会自动生效；如果之前开着 LiveSplit，必须重启。
+
+正常安装只需要这一个 DLL，不需要手动加布局。
+如果启动后没有透明效果：先确认 DLL 没有被改名或删除；仍无效时，右键计时器 -> Edit Layout，检查组件列表里有没有“透明背景”。
+
+卸载：退出 LiveSplit，删除 <你的 LiveSplit 安装目录>\Components\LiveSplit.TransparentBackground.dll，重启。
+
+三、已验证
+- 官方 1.8.37 原版与现有安装逐文件比对：89 个程序文件相同，唯一差异是 speedruncom_game_names.json 游戏名数据。
+- 现有安装实测：透明、白色分段文字、左键拖动、右键菜单均正常。
+- 日志关键行：apply key=#010203 ... ok=True / cleared split shadow images / rebuild splits done。
+
+四、兼容性
+- 官方原版 LiveSplit 1.8.37：可用。
+- 汉化版：未实测。只替换界面文本/语言资源通常可用；如果改组件类型名、程序版本或打包结构，不保证，需要按对应版本重新编译。
+- 其他大版本/改过类型名：不保证。插件按 TimerForm、SplitsComponent、SplitsSettings 反射；类型名变化时不会崩溃，但也不会透明。
+- 空 .lss 不会显示分段文字；布局必须包含 Splits 组件。
+
+五、已知限制
+- LiveSplit 的 New updates are available 提示会遮挡计时器，这是 LiveSplit 自身行为，不是插件。
+- 同一时间只能开一个 LiveSplit 实例；先退出所有 LiveSplit.exe，再用 LiveSplit.exe -s "<你的 .lss>" 启动，避免端口占用崩溃。
+- 行间细黑线是 LiveSplit 的行分隔线/标题栏，不是残留的半透明行背景。
+- 文字保持默认白色；雪地背景对比偏低是原版配色特性。
+
+六、源码
+- 源码文件 TransparentBackground.cs 已附带。
+- 重新编译命令和程序集特性见同目录的 说明.md。
+- 日志：%TEMP%\LiveSplitTransparent.log
+
+七、分发
+- 只需要 Components\LiveSplit.TransparentBackground.dll 和说明文件；源码可选。
+- 别人电脑的安装路径不同不影响，复制到对应 Components 目录即可。
