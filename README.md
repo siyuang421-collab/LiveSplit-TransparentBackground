@@ -85,3 +85,7 @@
 ```
 
 日志：`%TEMP%\LiveSplitTransparent.log`。
+
+## 许可证
+
+本项目采用 MIT License，详见 [LICENSE](LICENSE)。
