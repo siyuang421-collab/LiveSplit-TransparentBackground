@@ -47,3 +47,7 @@
 七、分发
 - 只需要 Components\LiveSplit.TransparentBackground.dll 和说明文件；源码可选。
 - 别人电脑的安装路径不同不影响，复制到对应 Components 目录即可。
+
+八、许可证
+
+本项目采用 MIT License，详见压缩包内的 LICENSE 文件。
